@@ -1,1 +1,1 @@
-# iTunesCLientApp
+# iTunesClientApp
