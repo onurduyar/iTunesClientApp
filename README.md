@@ -4,7 +4,7 @@
 
 <img src="https://github.com/onurduyar/iTunesClientApp/blob/develop/Assets/gitflow.png" width="700" alt="accessibility text">
 
-###  Features
+##  Features
 
 - ProgrammaticUI
 - Only URLSession
