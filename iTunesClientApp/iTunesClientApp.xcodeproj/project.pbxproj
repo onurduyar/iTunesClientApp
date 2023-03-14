@@ -12,6 +12,13 @@
 		780000CD29BB5DC3003C94B4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780000CC29BB5DC3003C94B4 /* MainViewController.swift */; };
 		780000D229BB5DC4003C94B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 780000D129BB5DC4003C94B4 /* Assets.xcassets */; };
 		780000D529BB5DC4003C94B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 780000D329BB5DC4003C94B4 /* LaunchScreen.storyboard */; };
+		78269D6B29C0718B00BDBB62 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78269D6A29C0718B00BDBB62 /* ErrorResponse.swift */; };
+		78269D6D29C0727900BDBB62 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78269D6C29C0727900BDBB62 /* DataRequest.swift */; };
+		78269D7029C0748D00BDBB62 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78269D6F29C0748D00BDBB62 /* NetworkService.swift */; };
+		78269D7329C0752900BDBB62 /* PodcastRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78269D7229C0752900BDBB62 /* PodcastRequest.swift */; };
+		78269D7729C076D400BDBB62 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78269D7629C076D400BDBB62 /* Podcast.swift */; };
+		78269D7929C076E100BDBB62 /* PodcastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78269D7829C076E100BDBB62 /* PodcastResponse.swift */; };
+		786E716929C06FE3001849AC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E716829C06FE3001849AC /* HTTPMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		780000D129BB5DC4003C94B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		780000D429BB5DC4003C94B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		780000D629BB5DC4003C94B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78269D6A29C0718B00BDBB62 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		78269D6C29C0727900BDBB62 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
+		78269D6F29C0748D00BDBB62 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		78269D7229C0752900BDBB62 /* PodcastRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastRequest.swift; sourceTree = "<group>"; };
+		78269D7629C076D400BDBB62 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		78269D7829C076E100BDBB62 /* PodcastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastResponse.swift; sourceTree = "<group>"; };
+		786E716829C06FE3001849AC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +77,7 @@
 		780000DC29BB629C003C94B4 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				78EEB61529BF3F320056B4B9 /* Core */,
 				780000E229BB62ED003C94B4 /* Views */,
 				780000E129BB62E8003C94B4 /* Plists */,
 				780000E029BB62DE003C94B4 /* Assets */,
@@ -115,6 +130,7 @@
 		780000E329BB63B6003C94B4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				78269D7429C076BD00BDBB62 /* Model */,
 				780000E529BB63C3003C94B4 /* Controller */,
 				780000E429BB63BB003C94B4 /* View */,
 			);
@@ -134,6 +150,51 @@
 				780000CC29BB5DC3003C94B4 /* MainViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		78269D6E29C0747700BDBB62 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				78269D6F29C0748D00BDBB62 /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		78269D7129C0751D00BDBB62 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				78269D7229C0752900BDBB62 /* PodcastRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		78269D7429C076BD00BDBB62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78269D7629C076D400BDBB62 /* Podcast.swift */,
+				78269D7829C076E100BDBB62 /* PodcastResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		78EEB61529BF3F320056B4B9 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				78EEB61629BF3F360056B4B9 /* Network */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		78EEB61629BF3F360056B4B9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				78269D7129C0751D00BDBB62 /* Requests */,
+				78269D6E29C0747700BDBB62 /* Services */,
+				786E716829C06FE3001849AC /* HTTPMethod.swift */,
+				78269D6A29C0718B00BDBB62 /* ErrorResponse.swift */,
+				78269D6C29C0727900BDBB62 /* DataRequest.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,8 +267,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78269D6D29C0727900BDBB62 /* DataRequest.swift in Sources */,
+				78269D7329C0752900BDBB62 /* PodcastRequest.swift in Sources */,
+				78269D7029C0748D00BDBB62 /* NetworkService.swift in Sources */,
+				78269D7929C076E100BDBB62 /* PodcastResponse.swift in Sources */,
+				78269D7729C076D400BDBB62 /* Podcast.swift in Sources */,
 				780000CD29BB5DC3003C94B4 /* MainViewController.swift in Sources */,
 				780000C929BB5DC3003C94B4 /* AppDelegate.swift in Sources */,
+				78269D6B29C0718B00BDBB62 /* ErrorResponse.swift in Sources */,
+				786E716929C06FE3001849AC /* HTTPMethod.swift in Sources */,
 				780000CB29BB5DC3003C94B4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
