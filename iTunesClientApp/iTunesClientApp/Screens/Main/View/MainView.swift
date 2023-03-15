@@ -33,7 +33,7 @@ final class MainView: UIView {
     // MARK: - Methods
     
     func setupCollectionViewLayout() {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(PodcastCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -47,5 +47,10 @@ final class MainView: UIView {
                                    andDataSource dataSource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = dataSource
+    }
+    func refresh() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }

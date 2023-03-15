@@ -11,17 +11,33 @@ final class MainViewController: UIViewController {
     // MARK: - Properties
     
     private let mainView = MainView()
-    
+    private let networkService = BaseNetworkService()
+    private var podcastResponse: PodcastResponse? {
+        didSet {
+            mainView.refresh()
+        }
+    }
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view = mainView
         mainView.setCollectionViewDelegate(delegate: self, andDataSource: self)
+        fetchPodcasts(with: "Podcast")
     }
     
     // MARK: - Methods
     
+    func fetchPodcasts(with text: String) {
+        networkService.request(PodcastRequest(searchText: text)) { result in
+            switch result {
+            case .success(let response):
+                self.podcastResponse = response
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
 
 
@@ -37,33 +53,16 @@ extension MainViewController: UICollectionViewDelegate {
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        podcastResponse?.results?.count ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .gray
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PodcastCollectionViewCell
+        let podcast = podcastResponse?.results?[indexPath.row]
+        cell.title = podcast?.trackName
         return cell
     }
     
     
     
 }
-
-
-/*
- private let networkService = BaseNetworkService()
- private var podcastResponse: PodcastResponse?
- 
- func fetchPodcasts(with text: String = "Podcast") {
-     networkService.request(PodcastRequest(searchText: text)) { result in
-         switch result {
-         case .success(let response):
-             self.podcastResponse = response
-             print(response)
-         case .failure(let error):
-             print(error.localizedDescription)
-         }
-     }
- }
- */
