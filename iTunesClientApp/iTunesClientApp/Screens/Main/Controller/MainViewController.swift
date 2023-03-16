@@ -19,6 +19,7 @@ final class MainViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Podcasts"
         view = mainView
         mainView.setCollectionViewDelegate(delegate: self, andDataSource: self)
         fetchPodcasts(with: "Podcast")

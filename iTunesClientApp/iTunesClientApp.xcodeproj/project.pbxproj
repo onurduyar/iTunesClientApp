@@ -22,6 +22,7 @@
 		786E716929C06FE3001849AC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E716829C06FE3001849AC /* HTTPMethod.swift */; };
 		78EEB61429BF3E170056B4B9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEB61329BF3E170056B4B9 /* MainView.swift */; };
 		78FBC8D329C3334E00B5BCCC /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FBC8D229C3334E00B5BCCC /* UIImage+Extensions.swift */; };
+		78FBC8D629C33BD100B5BCCC /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FBC8D529C33BD100B5BCCC /* CGFloat+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		786E716829C06FE3001849AC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		78EEB61329BF3E170056B4B9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		78FBC8D229C3334E00B5BCCC /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		78FBC8D529C33BD100B5BCCC /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				78FBC8D229C3334E00B5BCCC /* UIImage+Extensions.swift */,
+				78FBC8D529C33BD100B5BCCC /* CGFloat+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			files = (
 				78269D6D29C0727900BDBB62 /* DataRequest.swift in Sources */,
 				78269D7329C0752900BDBB62 /* PodcastRequest.swift in Sources */,
+				78FBC8D629C33BD100B5BCCC /* CGFloat+Extensions.swift in Sources */,
 				78269D7029C0748D00BDBB62 /* NetworkService.swift in Sources */,
 				78269D7929C076E100BDBB62 /* PodcastResponse.swift in Sources */,
 				78269D7729C076D400BDBB62 /* Podcast.swift in Sources */,
