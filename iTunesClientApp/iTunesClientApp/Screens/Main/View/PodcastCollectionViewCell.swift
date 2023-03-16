@@ -8,7 +8,8 @@
 import UIKit
 
 final class PodcastCollectionViewCell: UICollectionViewCell {
-    private lazy var imageView = UIImageView()
+    // MARK: - Properties
+    private(set) lazy var imageView = UIImageView()
     private lazy var titleLabel = UILabel()
     
     var image: UIImage? {
@@ -21,7 +22,7 @@ final class PodcastCollectionViewCell: UICollectionViewCell {
             titleLabel.text = title
         }
     }
-   
+   // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupImageView()
@@ -30,9 +31,7 @@ final class PodcastCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
+    // MARK: - Methods
     func setupImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)

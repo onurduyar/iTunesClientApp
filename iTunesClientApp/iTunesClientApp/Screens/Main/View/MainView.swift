@@ -9,29 +9,23 @@ import UIKit
 
 final class MainView: UIView {
     // MARK: - Properties
-    
     private lazy var flowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 128.0, height: 128.0)
         return flowLayout
     }()
-    
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     
     // MARK: - Init
-    
     init() {
         super.init(frame: .zero)
         backgroundColor = .green
         setupCollectionViewLayout()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     // MARK: - Methods
-    
     func setupCollectionViewLayout() {
         collectionView.register(PodcastCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         addSubview(collectionView)

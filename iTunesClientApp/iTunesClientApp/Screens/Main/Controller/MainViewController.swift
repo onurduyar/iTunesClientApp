@@ -9,7 +9,6 @@ import UIKit
 
 final class MainViewController: UIViewController {
     // MARK: - Properties
-    
     private let mainView = MainView()
     private let networkService = BaseNetworkService()
     private var podcastResponse: PodcastResponse? {
@@ -17,7 +16,6 @@ final class MainViewController: UIViewController {
             mainView.refresh()
         }
     }
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +23,7 @@ final class MainViewController: UIViewController {
         mainView.setCollectionViewDelegate(delegate: self, andDataSource: self)
         fetchPodcasts(with: "Podcast")
     }
-    
     // MARK: - Methods
-    
     func fetchPodcasts(with text: String) {
         networkService.request(PodcastRequest(searchText: text)) { result in
             switch result {
@@ -38,19 +34,16 @@ final class MainViewController: UIViewController {
             }
         }
     }
-    
-
-
 }
-// MARK: - UICollectionViewDelegate
 
+// MARK: - UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(indexPath.row)")
     }
 }
-// MARK: - UICollectionViewDataSource
 
+// MARK: - UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         podcastResponse?.results?.count ?? .zero
@@ -60,9 +53,7 @@ extension MainViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PodcastCollectionViewCell
         let podcast = podcastResponse?.results?[indexPath.row]
         cell.title = podcast?.trackName
+        cell.imageView.downloadImage(from: podcast?.artworkLarge)
         return cell
     }
-    
-    
-    
 }
