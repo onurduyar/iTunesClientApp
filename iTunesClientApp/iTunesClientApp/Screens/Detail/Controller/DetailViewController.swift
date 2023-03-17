@@ -8,8 +8,6 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-   
-    
     var podcast: Podcast?{
         didSet{
             detailView.imageView.downloadImage(from: podcast?.artworkLarge)
