@@ -18,7 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UINavigationController(rootViewController: MainViewController())
+        let navigationController = UINavigationController(rootViewController: MainViewController())
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [navigationController]
+        window?.rootViewController = tabBarController
+        tabBarController.tabBar.items![0].image = UIImage(named: "podcast")
         window?.makeKeyAndVisible()
         
     }

@@ -68,7 +68,7 @@ final class PodcastCollectionViewCell: UICollectionViewCell {
         imageView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor,constant: 16.0),
-            titleLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16.0),
+            titleLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -8.0),
             titleLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor,constant: -8.0)
         ])
     }

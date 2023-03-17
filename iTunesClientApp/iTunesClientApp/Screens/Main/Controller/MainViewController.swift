@@ -22,10 +22,15 @@ final class MainViewController: UIViewController {
         title = "Podcasts"
         view = mainView
         mainView.setCollectionViewDelegate(delegate: self, andDataSource: self)
-        fetchPodcasts(with: "Podcast")
+        let searchController = UISearchController()
+        searchController.searchBar.placeholder = "Education, Fun..."
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        navigationItem.searchController = searchController
+        fetchPodcasts()
     }
     // MARK: - Methods
-    func fetchPodcasts(with text: String) {
+    private func fetchPodcasts(with text: String = "Podcasts") {
         networkService.request(PodcastRequest(searchText: text)) { result in
             switch result {
             case .success(let response):
@@ -40,7 +45,9 @@ final class MainViewController: UIViewController {
 // MARK: - UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\(indexPath.row)")
+        let detailViewVC = DetailViewController()
+        detailViewVC.podcast = self.podcastResponse?.results?[indexPath.row]
+        navigationController?.pushViewController(detailViewVC, animated: true)
     }
 }
 
@@ -56,5 +63,19 @@ extension MainViewController: UICollectionViewDataSource {
         cell.title = podcast?.trackName
         cell.imageView.downloadImage(from: podcast?.artworkLarge)
         return cell
+    }
+}
+// MARK: - UISearchResultsUpdating
+extension MainViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text, text.count > 1 {
+            fetchPodcasts(with: text)
+        }
+    }
+}
+// MARK: - UISearchControllerDelegate
+extension MainViewController: UISearchControllerDelegate{
+    func didDismissSearchController(_ searchController: UISearchController) {
+        fetchPodcasts()
     }
 }
