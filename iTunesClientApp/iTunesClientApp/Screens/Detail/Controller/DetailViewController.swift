@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
             detailView.releaseDate = podcast?.releaseDate
             detailView.artistName = podcast?.artistName
             detailView.counrty = podcast?.country
-            detailView.genres = podcast?.genres?.reduce("") {$0 + ", " + $1}
+            detailView.genres = podcast?.genres?.reduce("") {$0 + $1 + ", "}
         }
     }
     private let detailView = DetailView()

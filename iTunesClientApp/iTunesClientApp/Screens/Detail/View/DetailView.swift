@@ -11,29 +11,66 @@ class DetailView: UIView {
     // MARK: - Properties
     var releaseDate: String? {
         didSet{
-            releaseDateLabel.text = "Release Date: \(releaseDate ?? "-")"
+            releaseDateKeyLabel.text = "Release Date:"
+            releaseDateKeyLabel.font = .boldSystemFont(ofSize: 17.0)
+            releaseDateLabel.text = releaseDate ?? "-"
+            
         }
     }
     var artistName: String? {
         didSet{
-            artistNameLabel.text = "Artist Name: \(artistName ?? "-")"
+            artistNameKeyLabel.text = "Release Date:"
+            artistNameKeyLabel.font = .boldSystemFont(ofSize: 17.0)
+            artistNameLabel.text = artistName ?? "-"
         }
     }
     var counrty: String? {
         didSet{
-            counrtyLabel.text = "Country: \(counrty ?? "-")"
+            countryKeyLabel.text = "Release Date:"
+            countryKeyLabel.font = .boldSystemFont(ofSize: 17.0)
+            countryLabel.text = counrty ?? "-"
         }
     }
     var genres: String? {
         didSet{
-            genresLabel.text = "Genre: \(genres ?? "-")"
+            genresKeyLabel.text = "Release Date:"
+            genresKeyLabel.font = .boldSystemFont(ofSize: 17.0)
+            genresLabel.text = genres ?? "-"
         }
     }
     private(set) lazy var imageView = UIImageView()
-    private lazy var releaseDateLabel = UILabel()
-    private lazy var artistNameLabel = UILabel()
-    private lazy var counrtyLabel = UILabel()
-    private lazy var genresLabel = UILabel()
+    
+    private let releaseDateKeyLabel = UILabel()
+    private let releaseDateLabel = UILabel()
+    private lazy var releaseDateStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [releaseDateKeyLabel, UIView(), releaseDateLabel])
+        stackView.axis = .horizontal
+        return stackView
+    }()
+    
+    private var artistNameKeyLabel = UILabel()
+    private var artistNameLabel = UILabel()
+    private lazy var artistNameStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [artistNameKeyLabel, UIView(), artistNameLabel])
+        stackView.axis = .horizontal
+        return stackView
+    }()
+    
+    private var countryKeyLabel = UILabel()
+    private var countryLabel = UILabel()
+    private lazy var countryStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [countryKeyLabel, UIView(), countryLabel])
+        stackView.axis = .horizontal
+        return stackView
+    }()
+    
+    private var genresKeyLabel = UILabel()
+    private var genresLabel = UILabel()
+    private lazy var genresStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [genresKeyLabel, UIView(), genresLabel])
+        stackView.axis = .horizontal
+        return stackView
+    }()
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -45,7 +82,7 @@ class DetailView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
+    
     // MARK: - Methods
     func setupImageView() {
         addSubview(imageView)
@@ -58,12 +95,13 @@ class DetailView: UIView {
         ])
     }
     func setupStackView() {
-        let stackView = UIStackView(arrangedSubviews: [releaseDateLabel,
-                                                       artistNameLabel,
-                                                       counrtyLabel,
-                                                       genresLabel
+        let stackView = UIStackView(arrangedSubviews: [releaseDateStackView,
+                                                       artistNameStackView,
+                                                       countryStackView,
+                                                       genresStackView
                                                       ])
         stackView.axis = .vertical
+        stackView.spacing = 8.0
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -73,7 +111,7 @@ class DetailView: UIView {
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -16.0),
         ])
         releaseDateLabel.numberOfLines = .zero
-        counrtyLabel.numberOfLines = .zero
+        countryLabel.numberOfLines = .zero
         artistNameLabel.numberOfLines = .zero
         genresLabel.numberOfLines = .zero
     }
