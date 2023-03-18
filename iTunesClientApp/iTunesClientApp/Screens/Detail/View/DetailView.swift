@@ -14,7 +14,6 @@ class DetailView: UIView {
             releaseDateKeyLabel.text = "Release Date:"
             releaseDateKeyLabel.font = .boldSystemFont(ofSize: 17.0)
             releaseDateLabel.text = releaseDate ?? "-"
-            
         }
     }
     var artistName: String? {
@@ -39,7 +38,6 @@ class DetailView: UIView {
         }
     }
     private(set) lazy var imageView = UIImageView()
-    
     private let releaseDateKeyLabel = UILabel()
     private let releaseDateLabel = UILabel()
     private lazy var releaseDateStackView: UIStackView = {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EBookDetailVC: UIViewController {
+final class EBookDetailVC: UIViewController {
     var eBook: EBook?{
         didSet{
             detailView.imageView.downloadImage(from: eBook?.artworkLarge)

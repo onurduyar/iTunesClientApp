@@ -20,6 +20,7 @@ final class PodcastVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Podcasts"
+        navigationController?.navigationBar.tintColor = .red
         view = mainView
         mainView.setCollectionViewDelegate(delegate: self, andDataSource: self)
         let searchController = UISearchController()
@@ -28,7 +29,7 @@ final class PodcastVC: UIViewController {
         searchController.delegate = self
         navigationItem.searchController = searchController
         fetchPodcasts()
-    }
+        }
     // MARK: - Methods
     private func fetchPodcasts(with text: String = "Podcasts") {
         networkService.request(PodcastRequest(searchText: text)) { result in

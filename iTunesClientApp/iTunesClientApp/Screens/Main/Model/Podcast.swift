@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Podcast: Decodable {
+struct Podcast: Decodable,Equatable {
+    static var favorites: [Podcast] = []
     let artistName: String?
     let trackName: String?
     let artworkLarge: URL?
