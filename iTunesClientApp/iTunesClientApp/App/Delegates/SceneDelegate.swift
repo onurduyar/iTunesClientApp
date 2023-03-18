@@ -18,11 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let navigationController = UINavigationController(rootViewController: MainViewController())
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [navigationController]
+        
+        let viewControllers = [
+            createPodcastVC(),
+            createEBookVC()
+        ]
+        tabBarController.tabBar.tintColor = .purple
+        tabBarController.viewControllers = viewControllers
         window?.rootViewController = tabBarController
-        tabBarController.tabBar.items![0].image = UIImage(named: "podcast")
         window?.makeKeyAndVisible()
         
     }
@@ -55,6 +59,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    
+    func createPodcastVC() -> UINavigationController {
+        let podcastVC = PodcastVC()
+        podcastVC.title = "Podcasts"
+        podcastVC.tabBarItem = UITabBarItem(title: "Podcasts", image: UIImage(named: "podcast"), tag: 0)
+        return UINavigationController(rootViewController: podcastVC)
+    }
+    
+    func createEBookVC() -> UINavigationController {
+        let eBookVC = EBookVC()
+        eBookVC.title = "EBooks"
+        eBookVC.tabBarItem = UITabBarItem(title: "EBooks", image: UIImage(systemName: "book"), tag: 0)
+        return UINavigationController(rootViewController: eBookVC)
+    }
 
 }
 

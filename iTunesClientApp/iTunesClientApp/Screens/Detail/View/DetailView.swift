@@ -19,21 +19,21 @@ class DetailView: UIView {
     }
     var artistName: String? {
         didSet{
-            artistNameKeyLabel.text = "Release Date:"
+            artistNameKeyLabel.text = "Artist Name:"
             artistNameKeyLabel.font = .boldSystemFont(ofSize: 17.0)
             artistNameLabel.text = artistName ?? "-"
         }
     }
     var counrty: String? {
         didSet{
-            countryKeyLabel.text = "Release Date:"
+            countryKeyLabel.text = "Country:"
             countryKeyLabel.font = .boldSystemFont(ofSize: 17.0)
             countryLabel.text = counrty ?? "-"
         }
     }
     var genres: String? {
         didSet{
-            genresKeyLabel.text = "Release Date:"
+            genresKeyLabel.text = "Genres:"
             genresKeyLabel.font = .boldSystemFont(ofSize: 17.0)
             genresLabel.text = genres ?? "-"
         }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class PodcastDetailVC: UIViewController {
     var podcast: Podcast?{
         didSet{
             detailView.imageView.downloadImage(from: podcast?.artworkLarge)

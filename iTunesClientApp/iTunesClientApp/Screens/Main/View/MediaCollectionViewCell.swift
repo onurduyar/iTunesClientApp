@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PodcastCollectionViewCell: UICollectionViewCell {
+final class MediaCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
     var image: UIImage? {
         didSet {

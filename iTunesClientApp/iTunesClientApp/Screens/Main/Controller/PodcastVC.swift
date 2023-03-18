@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainViewController: UIViewController {
+final class PodcastVC: UIViewController {
     // MARK: - Properties
     private let mainView = MainView()
     private let networkService = BaseNetworkService()
@@ -43,22 +43,22 @@ final class MainViewController: UIViewController {
 }
 
 // MARK: - UICollectionViewDelegate
-extension MainViewController: UICollectionViewDelegate {
+extension PodcastVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewVC = DetailViewController()
+        let detailViewVC = PodcastDetailVC()
         detailViewVC.podcast = self.podcastResponse?.results?[indexPath.row]
         navigationController?.pushViewController(detailViewVC, animated: true)
     }
 }
 
 // MARK: - UICollectionViewDataSource
-extension MainViewController: UICollectionViewDataSource {
+extension PodcastVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         podcastResponse?.results?.count ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PodcastCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MediaCollectionViewCell
         let podcast = podcastResponse?.results?[indexPath.row]
         cell.title = podcast?.trackName
         cell.imageView.downloadImage(from: podcast?.artworkLarge)
@@ -66,7 +66,7 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 // MARK: - UISearchResultsUpdating
-extension MainViewController: UISearchResultsUpdating {
+extension PodcastVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, text.count > 1 {
             fetchPodcasts(with: text)
@@ -74,7 +74,7 @@ extension MainViewController: UISearchResultsUpdating {
     }
 }
 // MARK: - UISearchControllerDelegate
-extension MainViewController: UISearchControllerDelegate{
+extension PodcastVC: UISearchControllerDelegate{
     func didDismissSearchController(_ searchController: UISearchController) {
         fetchPodcasts()
     }

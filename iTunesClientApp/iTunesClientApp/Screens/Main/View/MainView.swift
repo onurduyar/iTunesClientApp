@@ -30,7 +30,7 @@ final class MainView: UIView {
     }
     // MARK: - Methods
     func setupCollectionViewLayout() {
-        collectionView.register(PodcastCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(MediaCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
