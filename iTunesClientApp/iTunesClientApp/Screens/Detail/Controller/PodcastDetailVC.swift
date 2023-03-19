@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PodcastDetailVC: UIViewController {
     var podcast: Podcast?{
@@ -40,6 +41,17 @@ class PodcastDetailVC: UIViewController {
         if isFavorited{
             favItem.image = UIImage(systemName: "heart.fill")
             Podcast.favorites.append(podcast)
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Favorites", in: managedContext)!
+            let item = NSManagedObject(entity: entity, insertInto: managedContext)
+            item.setValue(podcast.trackName, forKey: "mediaName")
+            do {
+                try managedContext.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+            
             
         } else{
             favItem.image = UIImage(systemName: "heart")
@@ -47,7 +59,6 @@ class PodcastDetailVC: UIViewController {
             Podcast.favorites.remove(at: index)
             
         }
-        print(Podcast.favorites)
     }
 }
 

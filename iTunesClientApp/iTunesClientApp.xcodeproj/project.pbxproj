@@ -18,6 +18,8 @@
 		78269D7029C0748D00BDBB62 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78269D6F29C0748D00BDBB62 /* NetworkService.swift */; };
 		78269D7329C0752900BDBB62 /* PodcastRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78269D7229C0752900BDBB62 /* PodcastRequest.swift */; };
 		78269D7729C076D400BDBB62 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78269D7629C076D400BDBB62 /* Podcast.swift */; };
+		783DA1BB29C721BD00716826 /* Favorites.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 783DA1B929C721BD00716826 /* Favorites.xcdatamodeld */; };
+		783DA1E029C7277400716826 /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783DA1DF29C7277400716826 /* FavoriteVC.swift */; };
 		786E716929C06FE3001849AC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E716829C06FE3001849AC /* HTTPMethod.swift */; };
 		789FC13A29C35159004FEBC3 /* PodcastDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC13929C35159004FEBC3 /* PodcastDetailVC.swift */; };
 		789FC13E29C3517D004FEBC3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FC13D29C3517D004FEBC3 /* DetailView.swift */; };
@@ -45,6 +47,8 @@
 		78269D6F29C0748D00BDBB62 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		78269D7229C0752900BDBB62 /* PodcastRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastRequest.swift; sourceTree = "<group>"; };
 		78269D7629C076D400BDBB62 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		783DA1BA29C721BD00716826 /* Favorites.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorites.xcdatamodel; sourceTree = "<group>"; };
+		783DA1DF29C7277400716826 /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
 		786E716829C06FE3001849AC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		789FC13929C35159004FEBC3 /* PodcastDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailVC.swift; sourceTree = "<group>"; };
 		789FC13D29C3517D004FEBC3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 		780000DC29BB629C003C94B4 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				783DA1E129C7291300716826 /* DB */,
 				78EEB61529BF3F320056B4B9 /* Core */,
 				780000E229BB62ED003C94B4 /* Views */,
 				780000E129BB62E8003C94B4 /* Plists */,
@@ -172,6 +177,7 @@
 			children = (
 				780000CC29BB5DC3003C94B4 /* PodcastVC.swift */,
 				789FF7F829C5D264002582D4 /* EBookVC.swift */,
+				783DA1DF29C7277400716826 /* FavoriteVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -201,6 +207,14 @@
 				789FF7FF29C5D82C002582D4 /* EBook.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		783DA1E129C7291300716826 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				783DA1B929C721BD00716826 /* Favorites.xcdatamodeld */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 		789FC13829C3513A004FEBC3 /* Detail */ = {
@@ -331,7 +345,9 @@
 			files = (
 				78269D6D29C0727900BDBB62 /* DataRequest.swift in Sources */,
 				78269D7329C0752900BDBB62 /* PodcastRequest.swift in Sources */,
+				783DA1E029C7277400716826 /* FavoriteVC.swift in Sources */,
 				78FBC8D629C33BD100B5BCCC /* CGFloat+Extensions.swift in Sources */,
+				783DA1BB29C721BD00716826 /* Favorites.xcdatamodeld in Sources */,
 				789FF80229C5D8C8002582D4 /* EBookDetailVC.swift in Sources */,
 				78269D7029C0748D00BDBB62 /* NetworkService.swift in Sources */,
 				789FF7FC29C5D7F3002582D4 /* MediaResponse.swift in Sources */,
@@ -564,6 +580,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		783DA1B929C721BD00716826 /* Favorites.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				783DA1BA29C721BD00716826 /* Favorites.xcdatamodel */,
+			);
+			currentVersion = 783DA1BA29C721BD00716826 /* Favorites.xcdatamodel */;
+			path = Favorites.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 780000BD29BB5DC3003C94B4 /* Project object */;
 }

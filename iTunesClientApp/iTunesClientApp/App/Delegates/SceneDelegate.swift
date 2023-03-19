@@ -22,9 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let viewControllers = [
             createPodcastVC(),
-            createEBookVC()
+            createEBookVC(),
+            createFavVC()
         ]
-        tabBarController.tabBar.tintColor = .purple
+        tabBarController.tabBar.tintColor = .red
         tabBarController.viewControllers = viewControllers
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
@@ -70,9 +71,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createEBookVC() -> UINavigationController {
         let eBookVC = EBookVC()
         eBookVC.title = "EBooks"
-        eBookVC.tabBarItem = UITabBarItem(title: "EBooks", image: UIImage(systemName: "book"), tag: 0)
+        eBookVC.tabBarItem = UITabBarItem(title: "EBooks", image: UIImage(systemName: "book"), tag: 1)
         return UINavigationController(rootViewController: eBookVC)
     }
-
+    func createFavVC() -> UINavigationController {
+        let favVC = FavoriteVC()
+        favVC.title = "Favorites❤️"
+        favVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.fill"), tag: 2)
+        return UINavigationController(rootViewController: favVC)
+    }
 }
 
