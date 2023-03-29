@@ -9,6 +9,8 @@
 - ProgrammaticUI
 - Only URLSession
 - CoreData
+- NSCache
+- Generic Network Layer
 
 <img src="https://github.com/onurduyar/iTunesClientApp/blob/develop/Assets/screen1.png" width="300" alt="accessibility text">
 
