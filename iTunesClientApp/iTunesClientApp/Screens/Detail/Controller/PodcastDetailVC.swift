@@ -16,6 +16,7 @@ class PodcastDetailVC: UIViewController {
             detailView.releaseDate = podcast?.releaseDate
             detailView.artistName = podcast?.artistName
             detailView.counrty = podcast?.country
+            isFavorited = podcast?.isFavorite ?? false
             configureFavItem()
         }
     }
@@ -27,7 +28,7 @@ class PodcastDetailVC: UIViewController {
         view = detailView
     }
     func configureFavItem() {
-        if Podcast.favorites.contains(podcast!) {
+        if Podcast.favorites.contains(podcast!){
             isFavorited = true
             favItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: #selector(favoriteButtonTapped))
         }else {
@@ -37,6 +38,7 @@ class PodcastDetailVC: UIViewController {
     }
     @objc func favoriteButtonTapped() {
         isFavorited.toggle()
+        podcast?.isFavorite = isFavorited
         guard let podcast else {return}
         if isFavorited{
             favItem.image = UIImage(systemName: "heart.fill")
@@ -46,13 +48,13 @@ class PodcastDetailVC: UIViewController {
             let entity = NSEntityDescription.entity(forEntityName: "Favorites", in: managedContext)!
             let item = NSManagedObject(entity: entity, insertInto: managedContext)
             item.setValue(podcast.trackName, forKey: "mediaName")
+            item.setValue(podcast.artworkLarge?.absoluteString, forKey: "artwork")
+            item.setValue(podcast.isFavorite, forKey: "isFavorited")
             do {
                 try managedContext.save()
             } catch {
                 print(error.localizedDescription)
             }
-            
-            
         } else{
             favItem.image = UIImage(systemName: "heart")
             guard let index = Podcast.favorites.firstIndex(where: {$0 == podcast}) else { return }

@@ -20,7 +20,7 @@ final class MainView: UIView {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     
     // MARK: - Init
-    init() {
+    init() {    
         super.init(frame: .zero)
         backgroundColor = .green
         setupCollectionViewLayout()

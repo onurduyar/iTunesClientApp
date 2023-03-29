@@ -15,6 +15,11 @@ final class FavoriteVC: UIViewController {
         super.viewDidLoad()
         view = mainView
         mainView.setCollectionViewDelegate(delegate: self, andDataSource: self)
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        mainView.refresh()
         print(Podcast.favorites)
     }
 }

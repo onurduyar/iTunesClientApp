@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 final class PodcastVC: UIViewController {
     // MARK: - Properties
@@ -29,7 +30,29 @@ final class PodcastVC: UIViewController {
         searchController.delegate = self
         navigationItem.searchController = searchController
         fetchPodcasts()
+        Podcast.favorites.removeAll()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                if let mediaName = data.value(forKey: "mediaName") as? String,
+                   let artwork = data.value(forKey: "artwork") as? String,
+                   let isFavorite = data.value(forKey: "isFavorited") as? Bool{
+                    let podcast = Podcast(artistName: nil, trackName: mediaName, artworkLarge: URL(string: artwork),
+                                          releaseDate: nil, country: nil, genres: nil,isFavorite: isFavorite)
+                    Podcast.favorites.append(podcast)
+                    print(podcast)
+                }
+            }
+        } catch {
+            print("Error fetching persons: \(error.localizedDescription)")
         }
+        
+    }
     // MARK: - Methods
     private func fetchPodcasts(with text: String = "Podcasts") {
         networkService.request(PodcastRequest(searchText: text)) { result in

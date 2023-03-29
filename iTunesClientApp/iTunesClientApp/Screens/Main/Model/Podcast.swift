@@ -15,6 +15,7 @@ struct Podcast: Decodable,Equatable {
     let releaseDate: String?
     let country: String?
     let genres: [String]?
+    var isFavorite: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case artistName
