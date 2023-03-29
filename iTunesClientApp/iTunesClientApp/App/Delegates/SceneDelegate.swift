@@ -16,7 +16,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        let tabBarController = UITabBarController()
+        
+        let viewControllers = [
+            createPodcastVC(),
+            createEBookVC(),
+            createFavVC()
+        ]
+        tabBarController.tabBar.tintColor = .red
+        tabBarController.viewControllers = viewControllers
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -47,6 +60,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    
+    func createPodcastVC() -> UINavigationController {
+        let podcastVC = PodcastVC()
+        podcastVC.title = "Podcasts"
+        podcastVC.tabBarItem = UITabBarItem(title: "Podcasts", image: UIImage(named: "podcast"), tag: 0)
+        return UINavigationController(rootViewController: podcastVC)
+    }
+    
+    func createEBookVC() -> UINavigationController {
+        let eBookVC = EBookVC()
+        eBookVC.title = "EBooks"
+        eBookVC.tabBarItem = UITabBarItem(title: "EBooks", image: UIImage(systemName: "book"), tag: 1)
+        return UINavigationController(rootViewController: eBookVC)
+    }
+    func createFavVC() -> UINavigationController {
+        let favVC = FavoriteVC()
+        favVC.title = "Favorites❤️"
+        favVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.fill"), tag: 2)
+        return UINavigationController(rootViewController: favVC)
+    }
 }
 
